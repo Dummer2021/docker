@@ -14,7 +14,7 @@ docker-compose version
 
 3. Смотрим на содержание папки `6.docker-compose`. В ней нужно подправить два файла:
 
-`nginx/custom.conf`
+`nginx/custom.conf:`
 
 ```
 server {
@@ -23,7 +23,7 @@ server {
 
 ```
 
-`test/docker-entrypoint.sh`
+`test/docker-entrypoint.sh:`
 
 ```
 ...
@@ -171,3 +171,23 @@ cleanup:
 
 ...
 ```
+
+**САМОСТОЯТЕЛЬНАЯ РАБОТА:**
+Перейти в каталог `docker/practice/6.docker-compose/work_yourself`
+Проект в папке представляет из себя приложение на Flask, которое подсчитывает количество обращений к нему и записывает подсчет в Redis. Для сохранения результатов используется Docker Volume
+
+- Запустить это же приложение, но с healthcheck'ом сервиса `redis` через команду `redis-cli ping`
+- Старт сервиса `web` сделать зависимым от здоровья сервиса `redis`
+- Также ограничить через compose-файл сервису `redis` RAM до 500 МБ и CPU до 0,5
+- Проверить что все получилось можно сделав после запуска и получив значения:
+
+```
+docker inspect <имя_контейнера_redis> | grep "Memory\|NanoCpus"
+
+            "Memory": 524288000,
+            "NanoCpus": 500000000,
+```
+
+- либо использовав для проверки утилиту cgget.
+- В решении этой практической работы поможет документация: https://docs.docker.com/compose/compose-file/compose-file-v2/ 
+- Готовый файл для этой самостоятельной работы лежит в этом же репозитории и называется `docker-compose.yml_otvet`. Можно использовать как шпаргалку
