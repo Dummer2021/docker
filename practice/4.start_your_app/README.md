@@ -183,12 +183,13 @@ docker build -t test_size_2 .
 docker images
 ```
 
-6. Стало лучше, но давайте продолжим. У нас в папке лежит каталог `.git`, который точно не нужен для работы нашего Nginx. Исключаем его из сборки через добавление `.dockerignore`, добавив туда также наш `Dockerfile`:
+6. Стало лучше, но давайте продолжим. У нас в папке лежит PDF-файл, который точно не нужен для работы нашего Nginx. Исключаем его из сборки через добавление `.dockerignore`, добавив туда также наш `Dockerfile` и `.git`:
 
 ```
 touch .dockerignore
 echo ".git" > .dockerignore
 echo "Dockerfile" >> .dockerignore
+echo "*.pdf" >> .dockerignore
 ```
 
 7. Собираем еще раз и смотрим как теперь:
