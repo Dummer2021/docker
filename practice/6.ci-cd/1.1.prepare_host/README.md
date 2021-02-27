@@ -13,7 +13,7 @@ https://gitlab.slurm.io/s<Ваш номер логина>/xpaste
 
 * Добавляем переменные
 
-Для этого в левом меню находим `Settings -> CI/CD -> Variables` и нажимаем Expand. В поле `Name` вводим имя первой переменной:
+Для этого в левом меню находим `Settings -> CI/CD -> Variables` и нажимаем Expand. В поле `Key` вводим имя первой переменной:
 ```bash
 PRODUCTION_SERVER_IP
 ```
