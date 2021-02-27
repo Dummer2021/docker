@@ -32,7 +32,7 @@ docker inspect slurm-storage
 Попробуем как-то использовать созданный том, запустим с ним контейнер:
 
 ```bash
-docker run --rm –mount src=slurm-storage,dst=/data -it ubuntu:20.10 /bin/bash
+docker run --rm --mount src=slurm-storage,dst=/data -it ubuntu:20.10 /bin/bash
 echo $RANDOM > /data/file
 cat /data/file
 exit
