@@ -71,20 +71,30 @@ docker push app:1.1
 
 ## Логинимся в Gitlab registry и пушим туда
 
+0. Создаем новый пустой проект в Gitlab
+
+https://gitlab.slurm.io/projects/new#blank_project
+
+Обязательно назовите его `app`, чтобы не править команды ниже.
+
 1. Создаем project access токен в Gitlab
 
+Слева меню -> внизу `Settings` -> `Access Tokens`
+
 ```url
-https://gitlab.slurm.io/<ваш номер студента>/xpaste/-/settings/access_tokens
+https://gitlab.slurm.io/<ваш номер студента>/app/-/settings/access_tokens
 
 Name - любое имя (например docker-token)
 Scopes - read_registry, write_registry
 ```
 
+**Токен нужно обязательно сохранить!**
+
 2. Переходим в терминал со стендом и пытаемся залогиниться:
 
 ```bash
 docker login registry.slurm.io
-# вместо логина вводите что угодно
+# вместо логина вводите что угодно, пароль - из токена на предыдущем шаге
 ```
 
 Теперь мы можем туда что-нибудь отправить на хранение.
