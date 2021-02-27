@@ -3,7 +3,7 @@
 1. Переходим в каталог с практикой
 
 ```
-cd docker/practice/6.docker-compose
+cd docker/practice/5.docker-compose
 ```
 
 2. Проверяем, что docker-compose установлен:
@@ -12,7 +12,7 @@ cd docker/practice/6.docker-compose
 docker-compose version
 ```
 
-3. Смотрим на содержание папки `6.docker-compose`. В ней нужно подправить два файла:
+3. Смотрим на содержание папки `5.docker-compose`. В ней нужно подправить два файла:
 
 `nginx/custom.conf:`
 
@@ -173,7 +173,7 @@ cleanup:
 ```
 
 **САМОСТОЯТЕЛЬНАЯ РАБОТА:**
-Перейти в каталог `docker/practice/6.docker-compose/work_yourself`.
+Перейти в каталог `docker/practice/5.docker-compose/work_yourself`.
 Проект в папке представляет из себя приложение на Flask, которое подсчитывает количество обращений к нему и записывает подсчет в Redis. Для сохранения результатов используется Docker Volume.
 
 - Запустить это же приложение, но с healthcheck'ом сервиса `redis` через команду `redis-cli ping`
