@@ -32,7 +32,7 @@ docker inspect slurm-storage
 Попробуем как-то использовать созданный том, запустим с ним контейнер:
 
 ```bash
-docker run --rm --mount src=slurm-storage,dst=/data -it ubuntu:20.10 /bin/bash
+docker run --rm --mount src=slurm-storage,dst=/data -it ubuntu:18.04 /bin/bash
 echo $RANDOM > /data/file
 cat /data/file
 exit
@@ -49,7 +49,7 @@ docker run --rm --mount src=slurm-storage,dst=/data -it centos:8 /bin/bash -c "c
 А теперь примонтируем каталог с хоста:
 
 ```bash
-docker run --mount src=/srv,dst=/host/srv --name slurm --rm -it ubuntu:20.10 /bin/bash
+docker run --mount src=/srv,dst=/host/srv,type=bind --name slurm --rm -it ubuntu:18.04 /bin/bash
 ```
 
 Помните, что docker не любит относительные пути, лучше указывайте абсолютный!
@@ -57,7 +57,7 @@ docker run --mount src=/srv,dst=/host/srv --name slurm --rm -it ubuntu:20.10 /bi
 Теперь попробуем совместить оба типа томов сразу:
 
 ```bash
-docker run ---mount src=/srv,dst=/host/srv --mount src=slurm-storage,dst=/data --name slurm --rm -it ubuntu:20.10 /bin/bash
+docker run --mount src=/srv,dst=/host/srv,type=bind --mount src=slurm-storage,dst=/data --name slurm -it ubuntu:18.04 /bin/bash
 ```
 
 Отлично, а если нам нужно передать ровно те же тома другому контейнеру?
@@ -71,7 +71,7 @@ docker run --volumes-from slurm --name backup --rm -it centos:8 /bin/bash
 Создавать том заранее необязательно, всё сработает в момент запуска docker run:
 
 ```bash
-docker run -v newslurm:/newdata -v /srv:/host/srv -v slurm-storage:/data --name slurm --rm -it ubuntu:20.10 /bin/bash
+docker run --mount src=newslurm,dst=/newdata --name slurmdocker --rm -it ubuntu:18.04 /bin/bash
 ```
 
 Посмотрим теперь на список томов:
@@ -91,7 +91,7 @@ local     newslurm
 Ещё немного усложним нашу команду запуска, создадим анонимный том:
 
 ```bash
-docker run -v /anonymous -v newslurm:/newdata -v /srv:/host/srv -v slurm-storage:/data --name slurm --rm -it ubuntu:20.10 /bin/bash
+docker run -v /anonymous --name slurmanon --rm -it ubuntu:18.04 /bin/bash
 ```
 
 Помните, что такой том самоуничтожится после выхода из нашего контейнера, так как мы указали ключ `-–rm`
@@ -99,7 +99,7 @@ docker run -v /anonymous -v newslurm:/newdata -v /srv:/host/srv -v slurm-storage
 Если этого не сделать, давайте проверим что будет:
 
 ```bash
-docker run -v /anonymous -v newslurm:/newdata -v /srv:/host/srv -v slurm-storage:/data --name slurm -it ubuntu:20.10 /bin/bash
+docker run -v /anonymous --name slurmanon -it ubuntu:18.04 /bin/bash
 ```
 
 И увидим что-то такое:
