@@ -1,10 +1,10 @@
 # Самостоятельная работа
 
-I. Склонируйте репозиторий с практикой на машину с Docker и перейдите в директорию `practice/7.prog_lang`
+I. Склонируйте репозиторий с практикой на машину с Docker и перейдите в директорию `practice/9.prog_lang`
 
 ```bash
 git clone git@gitlab.slurm.io:docker/docker.git
-cd docker/practice/7.prog_lang
+cd docker/practice/9.prog_lang
 ```
 
 II. Самостоятельно напишите `Dockerfile` и `docker-compose.yml` файлы для сборки и запуска приложения в директории. Можете смело использовать все известные вам способы оптимизации, в том числе конкретно для Python. А также все знания, полученные на курсе ранее.
