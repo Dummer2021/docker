@@ -71,7 +71,7 @@ docker inspect my-app
 7. Видим что порт не прокинут на наш сервер. Выясним IP-адрес нашего контейнера и обратимся к нему с помощью curl:
 
 ```
-docker inspect | grep IPAddress
+docker inspect my-app | grep IPAddress
 curl <your_ip_address>
 ```
 
