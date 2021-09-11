@@ -132,13 +132,13 @@ https://gitlab.slurm.io/<ваш номер студента>/xpaste/container_re
 
 ```bash
 cd ~/
-wget https://github.com/goharbor/harbor/releases/download/v2.0.6/harbor-offline-installer-v2.0.6.tgz
+wget https://github.com/goharbor/harbor/releases/download/v2.3.2/harbor-offline-installer-v2.3.2.tgz
 ```
 
 2. Распакуем архив и перейдём в каталог:
 
 ```bash
-tar xvf harbor-offline-installer-v2.0.6.tgz
+tar xvf harbor-offline-installer-v2.3.2.tgz
 cd harbor/
 ```
 
